@@ -1,0 +1,196 @@
+{
+      "spider": "https://jihulab.com/Forrwin/0521/-/raw/main/forme.jar",
+      "wallpaper": "https://tuapi.eees.cc/api.php?category=fengjing&type=302",
+      "lives":
+ [
+   {
+      "name": "live",
+      "type": 0,
+      "url": "https://ghproxy.com/raw.githubusercontent.com/Forrwin/0521/main/live.txt",
+      "epg": "http://epg.112114.xyz/?ch={name}&date={date}",
+      "logo": "https://epg.112114.xyz/logo/{name}.png",
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36",
+      "playerType": 2
+    }
+  ],
+      "sites":
+ [
+   {
+      "key": "玩偶",
+      "name": "玩偶┃4K",
+      "type": 4,
+      "playerType": 1,
+      "api": "http://home.jundie.top:9520/spider/csp_Wogg?sort=原画,蓝光,超清,高清&token=342a28053dd54cf2b0246c6b33c74013"
+    }, 
+   {
+      "key":"爱奇艺",
+      "name":"爱奇艺|官源",
+      "type": 1,
+      "api":"http://tvbox-1-g5221611.deta.app/vod/iqiyi",
+      "playUrl": "https://www.yemu.xyz/v/c.php?url=",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1
+    },
+   {
+      "key": "bozrc",
+      "name": "腾讯|官源",
+      "type": 1,
+      "api": "http://tvbox-1-g5221611.deta.app/vod/qq",
+      "playUrl": "https://www.yemu.xyz/v/c.php?url=",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1
+    },
+   {
+      "key": "战狼",
+      "name": "搜狐|官源",
+      "type": 1,
+      "api": "http://tvbox-1-g5221611.deta.app/vod/sohu",
+      "playUrl":"https://jx.jsonplayer.com/player/?url=",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1
+    },
+   {
+      "key":"酷云77",
+      "name":"360|官源",
+      "type": 1,
+      "api":"http://tvbox-1-g5221611.deta.app/vod/360kan",
+      "playUrl": "https://jx.777jiexi.com/player/?url=",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1
+    },
+   {
+      "key": "泥巴",
+      "name": "泥巴|互联",
+      "type": 3,
+      "api": "csp_NiNi",
+      "searchable": 1,
+      "changeable": 1
+    },
+   {
+      "key":"低端",
+      "name":"低端|1080P",
+      "type":3,
+      "api":"https://ghproxy.com/https://raw.githubusercontent.com/hjdhnx/dr_py/main/libs/drpy2.min.js",
+      "ext":"https://ghproxy.com/https://raw.githubusercontent.com/hjdhnx/dr_py/main/js/ddys.js"
+
+    },
+   {
+      "key": "csp_SP33",
+      "name": "爱优腾┃官解",
+      "type": 3,
+      "api": "csp_SP33",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "changeable": 0
+    },
+   { 
+      "key": "南瓜",
+      "name": "南瓜┃HD",
+      "type": 3,
+      "playerType": 2,
+      "api": "https://agit.ai/Yemaozhi123/yemao/raw/branch/master/lib/drpy2.min.js",
+      "changeable": 0,
+      "searchable": 1,
+      "quickSearch": 1,
+      "ext": "https://gitcode.net/m0_73989217/ymz/-/raw/master/JS/%E5%8D%97%E7%93%9C.js"
+    },
+   {
+      "key": "天天",
+      "name": "天天┃HD",
+      "type": 1,
+      "api": "https://api.1080zyku.com/inc/apijson.php",
+      "playUrl": ""
+    },
+   {
+      "key": "快看",
+      "name": "快看┃HD",
+      "type": 3,
+      "api": "csp_Kuaikan",
+      "searchable": 1,
+      "quickSearch": 1,
+      "changeable": 1
+    },
+   {
+      "key": "七七",
+      "name": "七七┃HD",
+      "type": 3,
+      "api": "csp_Kunyu77",
+      "searchable":  1,
+      "quickSearch": 1,
+      "changeable": 1
+    },
+   {
+      "key": "视觉",
+      "name": "视觉┃HD",
+      "type": 3,
+      "api": "csp_Xinsj",
+      "searchable": 1,
+      "quickSearch": 1,
+      "changeable": 1,
+      "ext": "https://www.6080yy3.com/"
+    },
+   {
+      "key": "影视范",
+      "name": "影视范┃HD",
+      "type": 3,
+      "api": "csp_AppMr",
+      "searchable": 1,
+      "quickSearch": 1,
+      "changeable": 1
+    }
+  ],
+      "parses": 
+ [ 
+   {  
+      "name": "超级并发",
+      "type": 3,
+      "url": "Demo"
+    },
+   { 
+      "name": "超级嗅探",
+      "type": 3,
+      "url": "Web"
+    },
+   {
+     "name": "会员解析",
+     "type": 0,
+     "url": "https://www.yemu.xyz/v/c.php?url="
+    },
+   { 
+      "name":"会员解析2",
+      "type":0, 
+      "url":"https://jx.xmflv.cc/?url="
+    },
+   {
+      "name": "会员解析3",
+      "type": 0,
+      "url": "https://jx.777jiexi.com/player/?url="
+    },
+    {
+      "name": "会员解析4",
+      "type": 0,
+      "url": "http://api.huohua.vip/api/?key=6qwYWYpe4mSaPhFvSw&url="
+    },
+   {
+      "name": "会员解析5",
+      "type": 0,
+      "url": "https://hd.396pay.cn/api/?key=WYfoc47cVuA6xeED4H&url="
+    },
+   {
+      "name": "会员解析6",
+      "type": 0,
+      "url": "https://jx.jsonplayer.com/player/?url="
+    },
+    {
+      "name": "会员解析7",
+      "type": 0,
+      "url": "https://jx.bozrc.com:4433/player/?url="
+    }
+  ]
+}
+
