@@ -628,7 +628,7 @@ module.exports = {
     version: "0.1.17",
     appVersion: ">0.1.0-alpha.0",
     order: 19,
-    srcUrl: "http://spirits.eu.org/kuwo.js",
+    srcUrl: "http://spirits.eu.org/music/kuwo.js",
     cacheControl: "no-cache",
     hints: {
         importMusicSheet: [
