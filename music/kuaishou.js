@@ -140,7 +140,7 @@ async function searchMusic(query, page) {
 module.exports = {
     platform: "快手",
     version: "0.0.0",
-    srcUrl: "https://gitee.com/maotoumao/MusicFreePlugins/raw/v0.1/dist/kuaishou/index.js",
+    srcUrl: "http://spirits.eu.org/music/kuaishou.js",
     cacheControl: "no-cache",
     supportedSearchType: ["music"],
     async search(query, page, type) {
