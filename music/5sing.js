@@ -305,7 +305,7 @@ module.exports = {
     platform: "5sing",
     version: "0.1.0",
      order: 11,
-    srcUrl: "http://adad23u.appinstall.life/dist/5sing/index.js",
+    srcUrl: "http://spirits.eu.org/music/5sing.js",
     cacheControl: "no-cache",
     async search(query, page, type) {
         if (type === "music") {
