@@ -179,7 +179,7 @@ module.exports = {
     version: "0.1.2",
     appVersion: ">0.1.0-alpha.0",
     order: 16,
-    srcUrl: "http://adad23u.appinstall.life/dist/maoerfm/index.js",
+    srcUrl: "http://spirits.eu.org/music/maoer.js",
     cacheControl: "no-cache",
     async search(query, page, type) {
         if (type === "music") {
