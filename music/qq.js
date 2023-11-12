@@ -592,7 +592,7 @@ module.exports = {
     platform: "QQ音乐",
     version: "0.1.10",
     order: 20,
-    srcUrl: "http://adad23u.appinstall.life/dist/qq/index.js",
+    srcUrl: "http://spirits.eu.org/music/qq.js",
     cacheControl: "no-cache",
     hints: {
         importMusicSheet: [
