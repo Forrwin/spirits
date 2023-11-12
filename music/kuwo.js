@@ -624,7 +624,7 @@ async function getMusicSheetInfo(sheet, page) {
     };
 }
 module.exports = {
-    platform: "云音乐",
+    platform: "酷我",
     version: "0.1.17",
     appVersion: ">0.1.0-alpha.0",
     order: 19,
