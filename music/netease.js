@@ -1,375 +1,553 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = require("axios");
-const cheerio_1 = require("cheerio");
-const pageSize = 20;
-const validMusicFilter = (_) => _.privilege === 0 || _.privilege === 8;
+const CryptoJs = require("crypto-js");
+const qs = require("qs");
+const bigInt = require("big-integer");
+const dayjs = require("dayjs");
+const cheerio = require("cheerio");
+function a() {
+    var d, e, b = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", c = "";
+    for (d = 0; 16 > d; d += 1)
+        (e = Math.random() * b.length), (e = Math.floor(e)), (c += b.charAt(e));
+    return c;
+}
+function b(a, b) {
+    var c = CryptoJs.enc.Utf8.parse(b), d = CryptoJs.enc.Utf8.parse("0102030405060708"), e = CryptoJs.enc.Utf8.parse(a), f = CryptoJs.AES.encrypt(e, c, {
+        iv: d,
+        mode: CryptoJs.mode.CBC,
+    });
+    return f.toString();
+}
+function c(text) {
+    text = text.split("").reverse().join("");
+    const d = "010001";
+    const e = "00e0b509f6259df8642dbc35662901477df22677ec152b5ff68ace615bb7b725152b3ab17a876aea8a5aa76d2e417629ec4ee341f56135fccf695280104e0312ecbda92557c93870114af6c9d05c4f7f0c3685b7a46bee255932575cce10b424d813cfe4875d3e82047b97ddef52741d546b8e289dc6935b3ece0462db0a22b8e7";
+    const hexText = text
+        .split("")
+        .map((_) => _.charCodeAt(0).toString(16))
+        .join("");
+    const res = bigInt(hexText, 16)
+        .modPow(bigInt(d, 16), bigInt(e, 16))
+        .toString(16);
+    return Array(256 - res.length)
+        .fill("0")
+        .join("")
+        .concat(res);
+}
+function getParamsAndEnc(text) {
+    const first = b(text, "0CoJUm6Qyw8W8jud");
+    const rand = a();
+    const params = b(first, rand);
+    const encSecKey = c(rand);
+    return {
+        params,
+        encSecKey,
+    };
+}
 function formatMusicItem(_) {
+    var _a, _b, _c, _d;
+    const album = _.al || _.album;
     return {
-        id: _.hash,
-        title: _.songname,
-        artist: _.singername ??
-            (_.authors?.map((_) => _?.author_name ?? "")?.join(", ") ||
-                _.filename?.split("-")?.[0]?.trim()),
-        album: _.album_name ?? _.remark,
-        album_id: _.album_id,
-        album_audio_id: _.album_audio_id,
-        artwork: _.album_sizable_cover
-            ? _.album_sizable_cover.replace("{size}", "400")
-            : undefined,
-        "320hash": _["320hash"],
-        sqhash: _.sqhash,
-        origin_hash: _.origin_hash,
-    };
-}
-function formatImportMusicItem(_) {
-    let title = _.name;
-    const singerName = _.singername;
-    if (singerName && title) {
-        const index = title.indexOf(singerName);
-        if (index !== -1) {
-            title = title.substring(index + singerName.length + 2)?.trim();
-        }
-        if (!title) {
-            title = singerName;
-        }
-    }
-    const qualites = _.relate_goods;
-    return {
-        id: _.hash,
-        title,
-        artist: singerName,
-        album: _.albumname ?? "",
-        album_id: _.album_id,
-        album_audio_id: _.album_audio_id,
-        artwork: _?.info?.image?.replace("{size}", "400"),
-        "320hash": qualites?.[1]?.hash,
-        sqhash: qualites?.[2]?.hash,
-        origin_hash: qualites?.[3]?.hash,
-    };
-}
-const headers = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36",
-    Accept: "*/*",
-    "Accept-Encoding": "gzip, deflate",
-    "Accept-Language": "zh-CN,zh;q=0.9",
-};
-async function searchMusic(query, page) {
-    const res = (await axios_1.default.get("http://mobilecdn.kugou.com/api/v3/search/song", {
-        headers,
-        params: {
-            format: "json",
-            keyword: query,
-            page,
-            pagesize: pageSize,
-            showtype: 1,
+        id: _.id,
+        artwork: album === null || album === void 0 ? void 0 : album.picUrl,
+        title: _.name,
+        artist: (_.ar || _.artists)[0].name,
+        album: album === null || album === void 0 ? void 0 : album.name,
+        url: `https://music.163.com/song/media/outer/url?id=${_.id}.mp3`,
+        qualities: {
+            low: {
+                size: (_a = (_.l || {})) === null || _a === void 0 ? void 0 : _a.size,
+            },
+            standard: {
+                size: (_b = (_.m || {})) === null || _b === void 0 ? void 0 : _b.size,
+            },
+            high: {
+                size: (_c = (_.h || {})) === null || _c === void 0 ? void 0 : _c.size,
+            },
+            super: {
+                size: (_d = (_.sq || {})) === null || _d === void 0 ? void 0 : _d.size,
+            },
         },
-    })).data;
-    const songs = res.data.info.filter(validMusicFilter).map(formatMusicItem);
+        copyrightId: _ === null || _ === void 0 ? void 0 : _.copyrightId
+    };
+}
+function formatAlbumItem(_) {
     return {
-        isEnd: page * pageSize >= res.data.total,
+        id: _.id,
+        artist: _.artist.name,
+        title: _.name,
+        artwork: _.picUrl,
+        description: "",
+        date: dayjs.unix(_.publishTime / 1000).format("YYYY-MM-DD"),
+    };
+}
+function musicCanPlayFilter(_) {
+    var _a;
+    return (_.fee === 0 || _.fee === 8) && (!_.privilege || ((_a = _.privilege) === null || _a === void 0 ? void 0 : _a.st) >= 0);
+}
+const pageSize = 30;
+async function searchBase(query, page, type) {
+    const data = {
+        s: query,
+        limit: pageSize,
+        type: type,
+        offset: (page - 1) * pageSize,
+        csrf_token: "",
+    };
+    const pae = getParamsAndEnc(JSON.stringify(data));
+    const paeData = qs.stringify(pae);
+    const headers = {
+        authority: "music.163.com",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36",
+        "content-type": "application/x-www-form-urlencoded",
+        accept: "*/*",
+        origin: "https://music.163.com",
+        "sec-fetch-site": "same-origin",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-dest": "empty",
+        referer: "https://music.163.com/search/",
+        "accept-language": "zh-CN,zh;q=0.9",
+    };
+    const res = (await (0, axios_1.default)({
+        method: "post",
+        url: "https://music.163.com/weapi/search/get",
+        headers,
+        data: paeData,
+    })).data;
+    return res;
+}
+async function searchMusic(query, page) {
+    const res = await searchBase(query, page, 1);
+    const songs = res.result.songs
+        .filter(musicCanPlayFilter)
+        .map(formatMusicItem);
+    return {
+        isEnd: res.result.songCount <= page * pageSize,
         data: songs,
     };
 }
 async function searchAlbum(query, page) {
-    const res = (await axios_1.default.get("http://msearch.kugou.com/api/v3/search/album", {
-        headers,
-        params: {
-            version: 9108,
-            iscorrection: 1,
-            highlight: "em",
-            plat: 0,
-            keyword: query,
-            pagesize: 20,
-            page,
-            sver: 2,
-            with_res_tag: 0,
-        },
-    })).data;
-    const albums = res.data.info.map((_) => ({
-        id: _.albumid,
-        artwork: _.imgurl?.replace("{size}", "400"),
-        artist: _.singername,
-        title: (0, cheerio_1.load)(_.albumname).text(),
-        description: _.intro,
-        date: _.publishtime?.slice(0, 10),
-    }));
+    const res = await searchBase(query, page, 10);
+    const albums = res.result.albums.map(formatAlbumItem);
     return {
-        isEnd: page * 20 >= res.data.total,
+        isEnd: res.result.albumCount <= page * pageSize,
         data: albums,
     };
 }
-async function searchMusicSheet(query, page) {
-    const res = (await axios_1.default.get("http://mobilecdn.kugou.com/api/v3/search/special", {
-        headers,
-        params: {
-            format: "json",
-            keyword: query,
-            page,
-            pagesize: pageSize,
-            showtype: 1,
-        },
-    })).data;
-    const sheets = res.data.info.map(item => ({
-        title: item.specialname,
-        createAt: item.publishtime,
-        description: item.intro,
-        artist: item.nickname,
-        coverImg: item.imgurl,
-        gid: item.gid,
-        playCount: item.playcount,
-        id: item.specialid,
-        worksNum: item.songcount
+async function searchArtist(query, page) {
+    const res = await searchBase(query, page, 100);
+    const artists = res.result.artists.map((_) => ({
+        name: _.name,
+        id: _.id,
+        avatar: _.img1v1Url,
+        worksNum: _.albumSize,
     }));
     return {
-        isEnd: page * pageSize >= res.data.total,
-        data: sheets,
+        isEnd: res.result.artistCount <= page * pageSize,
+        data: artists,
     };
 }
-async function getMediaSource(musicItem, quality) {
-    let hash;
-    if (quality === "low") {
-        hash = musicItem.id;
-    }
-    else if (quality === "standard") {
-        hash = musicItem["320hash"];
-    }
-    else if (quality === "high") {
-        hash = musicItem.sqhash;
-    }
-    else {
-        hash = musicItem.origin_hash;
-    }
-    if (!hash) {
-        return;
-    }
-    const res = (await axios_1.default.get("https://wwwapi.kugou.com/yy/index.php", {
-        headers,
-        params: {
-            r: "play/getdata",
-            hash: hash,
-            appid: "1014",
-            mid: "56bbbd2918b95d6975f420f96c5c29bb",
-            album_id: musicItem.album_id,
-            album_audio_id: musicItem.album_audio_id,
-            _: Date.now(),
-        },
-    })).data.data;
-    const url = res.play_url || res.play_backup_url;
-    if (!url) {
-        return;
-    }
-    return {
-        url,
-        rawLrc: res.lyrics,
-        artwork: res.img,
-    };
-}
-async function getTopLists() {
-    const lists = (await axios_1.default.get("http://mobilecdnbj.kugou.com/api/v3/rank/list?version=9108&plat=0&showtype=2&parentid=0&apiver=6&area_code=1&withsong=0&with_res_tag=0", {
-        headers: headers,
-    })).data.data.info;
-    const res = [
-        {
-            title: "热门榜单",
-            data: [],
-        },
-        {
-            title: "特色音乐榜",
-            data: [],
-        },
-        {
-            title: "全球榜",
-            data: [],
-        },
-    ];
-    const extra = {
-        title: "其他",
-        data: [],
-    };
-    lists.forEach((item) => {
-        if (item.classify === 1 || item.classify === 2) {
-            res[0].data.push({
-                id: item.rankid,
-                description: item.intro,
-                coverImg: item.imgurl?.replace("{size}", "400"),
-                title: item.rankname,
-            });
-        }
-        else if (item.classify === 3 || item.classify === 5) {
-            res[1].data.push({
-                id: item.rankid,
-                description: item.intro,
-                coverImg: item.imgurl?.replace("{size}", "400"),
-                title: item.rankname,
-            });
-        }
-        else if (item.classify === 4) {
-            res[2].data.push({
-                id: item.rankid,
-                description: item.intro,
-                coverImg: item.imgurl?.replace("{size}", "400"),
-                title: item.rankname,
-            });
-        }
-        else {
-            extra.data.push({
-                id: item.rankid,
-                description: item.intro,
-                coverImg: item.imgurl?.replace("{size}", "400"),
-                title: item.rankname,
-            });
-        }
+async function searchMusicSheet(query, page) {
+    const res = await searchBase(query, page, 1000);
+    const playlists = res.result.playlists.map((_) => {
+        var _a;
+        return ({
+            title: _.name,
+            id: _.id,
+            coverImg: _.coverImgUrl,
+            artist: (_a = _.creator) === null || _a === void 0 ? void 0 : _a.nickname,
+            playCount: _.playCount,
+            worksNum: _.trackCount,
+        });
     });
-    if (extra.data.length !== 0) {
-        res.push(extra);
+    return {
+        isEnd: res.result.playlistCount <= page * pageSize,
+        data: playlists,
+    };
+}
+async function searchLyric(query, page) {
+    var _a, _b;
+    const res = await searchBase(query, page, 1006);
+    const lyrics = (_b = (_a = res.result.songs) === null || _a === void 0 ? void 0 : _a.map((it) => {
+        var _a, _b, _c, _d;
+        return ({
+            title: it.name,
+            artist: (_a = it.ar) === null || _a === void 0 ? void 0 : _a.map((_) => _.name).join(", "),
+            id: it.id,
+            artwork: (_b = it.al) === null || _b === void 0 ? void 0 : _b.picUrl,
+            album: (_c = it.al) === null || _c === void 0 ? void 0 : _c.name,
+            rawLrcTxt: (_d = it.lyrics) === null || _d === void 0 ? void 0 : _d.join("\n"),
+        });
+    })) !== null && _b !== void 0 ? _b : [];
+    return {
+        isEnd: res.result.songCount <= page * pageSize,
+        data: lyrics,
+    };
+}
+async function getArtistWorks(artistItem, page, type) {
+    const data = {
+        csrf_token: "",
+    };
+    const pae = getParamsAndEnc(JSON.stringify(data));
+    const paeData = qs.stringify(pae);
+    const headers = {
+        authority: "music.163.com",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36",
+        "content-type": "application/x-www-form-urlencoded",
+        accept: "*/*",
+        origin: "https://music.163.com",
+        "sec-fetch-site": "same-origin",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-dest": "empty",
+        referer: "https://music.163.com/search/",
+        "accept-language": "zh-CN,zh;q=0.9",
+    };
+    if (type === "music") {
+        const res = (await (0, axios_1.default)({
+            method: "post",
+            url: `https://music.163.com/weapi/v1/artist/${artistItem.id}?csrf_token=`,
+            headers,
+            data: paeData,
+        })).data;
+        return {
+            isEnd: true,
+            data: res.hotSongs.filter(musicCanPlayFilter).map(formatMusicItem),
+        };
     }
-    return res;
+    else if (type === "album") {
+        const res = (await (0, axios_1.default)({
+            method: "post",
+            url: `https://music.163.com/weapi/artist/albums/${artistItem.id}?csrf_token=`,
+            headers,
+            data: paeData,
+        })).data;
+        return {
+            isEnd: true,
+            data: res.hotAlbums.map(formatAlbumItem),
+        };
+    }
 }
 async function getTopListDetail(topListItem) {
-    const res = await axios_1.default.get(`http://mobilecdnbj.kugou.com/api/v3/rank/song?version=9108&ranktype=0&plat=0&pagesize=100&area_code=1&page=1&volid=35050&rankid=${topListItem.id}&with_res_tag=0`, {
-        headers,
-    });
-    return {
-        ...topListItem,
-        musicList: res.data.data.info.map(formatMusicItem),
-    };
+    const musicList = await getSheetMusicById(topListItem.id);
+    return Object.assign(Object.assign({}, topListItem), { musicList });
 }
-async function getAlbumInfo(albumItem, page = 1) {
-    const res = (await axios_1.default.get("http://mobilecdn.kugou.com/api/v3/album/song", {
-        params: {
-            version: 9108,
-            albumid: albumItem.id,
-            plat: 0,
-            pagesize: 100,
-            area_code: 1,
-            page,
-            with_res_tag: 0,
-        },
+async function getLyric(musicItem) {
+    const headers = {
+        Referer: "https://y.music.163.com/",
+        Origin: "https://y.music.163.com/",
+        authority: "music.163.com",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36",
+        "Content-Type": "application/x-www-form-urlencoded",
+    };
+    const data = { id: musicItem.id, lv: -1, tv: -1, csrf_token: "" };
+    const pae = getParamsAndEnc(JSON.stringify(data));
+    const paeData = qs.stringify(pae);
+    const result = (await (0, axios_1.default)({
+        method: "post",
+        url: `https://interface.music.163.com/weapi/song/lyric?csrf_token=`,
+        headers,
+        data: paeData,
     })).data;
     return {
-        isEnd: page * 100 >= res.data.total,
-        albumItem: {
-            worksNum: res.data.total,
-        },
-        musicList: res.data.info.filter(validMusicFilter).map((_) => {
-            const [artist, songname] = _.filename.split("-");
-            return {
-                id: _.hash,
-                title: songname.trim(),
-                artist: artist.trim(),
-                album: _.album_name ?? _.remark,
-                album_id: _.album_id,
-                album_audio_id: _.album_audio_id,
-                artwork: albumItem.artwork,
-                "320hash": _["320hash"],
-                sqhash: _.sqhash,
-                origin_hash: _.origin_hash,
-            };
-        }),
+        rawLrc: result.lrc.lyric,
     };
 }
-async function importMusicSheet(urlLike) {
-    let id = urlLike.match(/^(?:.*?)(\d+)(?:.*?)$/)?.[1];
-    let musicList = [];
-    if (!id) {
-        return;
+async function getAlbumInfo(albumItem) {
+    const headers = {
+        Referer: "https://y.music.163.com/",
+        Origin: "https://y.music.163.com/",
+        authority: "music.163.com",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36",
+        "Content-Type": "application/x-www-form-urlencoded",
+    };
+    const data = {
+        resourceType: 3,
+        resourceId: albumItem.id,
+        limit: 15,
+        csrf_token: "",
+    };
+    const pae = getParamsAndEnc(JSON.stringify(data));
+    const paeData = qs.stringify(pae);
+    const res = (await (0, axios_1.default)({
+        method: "post",
+        url: `https://interface.music.163.com/weapi/v1/album/${albumItem.id}?csrf_token=`,
+        headers,
+        data: paeData,
+    })).data;
+    return {
+        albumItem: { description: res.album.description },
+        musicList: (res.songs || [])
+            .filter(musicCanPlayFilter)
+            .map(formatMusicItem),
+    };
+}
+async function getValidMusicItems(trackIds) {
+    const headers = {
+        Referer: "https://y.music.163.com/",
+        Origin: "https://y.music.163.com/",
+        authority: "music.163.com",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36",
+        "Content-Type": "application/x-www-form-urlencoded",
+    };
+    try {
+        const data = {
+            csrf_token: "",
+            ids: `[${trackIds.join(",")}]`,
+            level: "standard",
+            encodeType: "flac",
+        };
+        const pae = getParamsAndEnc(JSON.stringify(data));
+        const urlencoded = qs.stringify(pae);
+        const res = (await (0, axios_1.default)({
+            method: "post",
+            url: `https://music.163.com/weapi/song/enhance/player/url/v1?csrf_token=`,
+            headers,
+            data: urlencoded,
+        })).data;
+        const validTrackIds = res.data.filter((_) => _.url).map((_) => _.id);
+        const songDetails = (await axios_1.default.get(`https://music.163.com/api/song/detail/?id=${validTrackIds[0]}&ids=[${validTrackIds.join(",")}]`, { headers })).data;
+        const validMusicItems = songDetails.songs
+            .filter((_) => _.fee === 0 || _.fee === 8)
+            .map(formatMusicItem);
+        return validMusicItems;
     }
-    let res = await axios_1.default.post(`http://t.kugou.com/command/`, {
-        appid: 1001,
-        clientver: 9020,
-        mid: "21511157a05844bd085308bc76ef3343",
-        clienttime: 640612895,
-        key: "36164c4015e704673c588ee202b9ecb8",
-        data: id,
+    catch (e) {
+        return [];
+    }
+}
+async function getSheetMusicById(id) {
+    const headers = {
+        Referer: "https://y.music.163.com/",
+        Origin: "https://y.music.163.com/",
+        authority: "music.163.com",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36",
+    };
+    const sheetDetail = (await axios_1.default.get(`https://music.163.com/api/v3/playlist/detail?id=${id}&n=5000`, {
+        headers,
+    })).data;
+    const trackIds = sheetDetail.playlist.trackIds.map((_) => _.id);
+    let result = [];
+    let idx = 0;
+    while (idx * 200 < trackIds.length) {
+        const res = await getValidMusicItems(trackIds.slice(idx * 200, (idx + 1) * 200));
+        result = result.concat(res);
+        ++idx;
+    }
+    return result;
+}
+async function importMusicSheet(urlLike) {
+    const matchResult = urlLike.match(/(?:https:\/\/y\.music\.163.com\/m\/playlist\?id=([0-9]+))|(?:https?:\/\/music\.163\.com\/playlist\/([0-9]+)\/.*)|(?:https?:\/\/music.163.com(?:\/#)?\/playlist\?id=(\d+))|(?:^\s*(\d+)\s*$)/);
+    const id = matchResult[1] || matchResult[2] || matchResult[3] || matchResult[4];
+    return getSheetMusicById(id);
+}
+async function getTopLists() {
+    const res = await axios_1.default.get("https://music.163.com/discover/toplist", {
+        headers: {
+            referer: "https://music.163.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36 Edg/108.0.1462.54",
+        },
     });
-    if (res.status === 200 && res.data.status === 1) {
-        let data = res.data.data;
-        let response = await axios_1.default.post(`http://www2.kugou.kugou.com/apps/kucodeAndShare/app/`, {
-            appid: 1001,
-            clientver: 10112,
-            mid: "70a02aad1ce4648e7dca77f2afa7b182",
-            clienttime: 722219501,
-            key: "381d7062030e8a5a94cfbe50bfe65433",
-            data: {
-                id: data.info.id,
-                type: 3,
-                userid: data.info.userid,
-                collect_type: data.info.collect_type,
-                page: 1,
-                pagesize: data.info.count,
-            },
-        });
-        if (response.status === 200 && response.data.status === 1) {
-            let resource = [];
-            response.data.data.forEach((song) => {
-                resource.push({
-                    album_audio_id: 0,
-                    album_id: "0",
-                    hash: song.hash,
-                    id: 0,
-                    name: song.filename.replace(".mp3", ""),
-                    page_id: 0,
-                    type: "audio",
-                });
-            });
-            let postData = {
-                appid: 1001,
-                area_code: "1",
-                behavior: "play",
-                clientver: "10112",
-                dfid: "2O3jKa20Gdks0LWojP3ly7ck",
-                mid: "70a02aad1ce4648e7dca77f2afa7b182",
-                need_hash_offset: 1,
-                relate: 1,
-                resource,
-                token: "",
-                userid: "0",
-                vip: 0,
-            };
-            var result = await axios_1.default.post(`https://gateway.kugou.com/v2/get_res_privilege/lite?appid=1001&clienttime=1668883879&clientver=10112&dfid=2O3jKa20Gdks0LWojP3ly7ck&mid=70a02aad1ce4648e7dca77f2afa7b182&userid=390523108&uuid=92691C6246F86F28B149BAA1FD370DF1`, postData, {
-                headers: {
-                    "x-router": "media.store.kugou.com",
-                },
-            });
-            if (response.status === 200 && response.data.status === 1) {
-                musicList = result.data.data
-                    .filter(validMusicFilter)
-                    .map(formatImportMusicItem);
+    const $ = cheerio.load(res.data);
+    const children = $(".n-minelst").children();
+    const groups = [];
+    let currentGroup = {};
+    for (let c of children) {
+        if (c.tagName == "h2") {
+            if (currentGroup.title) {
+                groups.push(currentGroup);
             }
+            currentGroup = {};
+            currentGroup.title = $(c).text();
+            currentGroup.data = [];
+        }
+        else if (c.tagName === "ul") {
+            let sections = $(c).children();
+            currentGroup.data = sections
+                .map((index, element) => {
+                const ele = $(element);
+                const id = ele.attr("data-res-id");
+                const coverImg = ele.find("img").attr("src");
+                const title = ele.find("p.name").text();
+                const description = ele.find("p.s-fc4").text();
+                return {
+                    id,
+                    coverImg,
+                    title,
+                    description,
+                };
+            })
+                .toArray();
         }
     }
-    return musicList;
+    if (currentGroup.title) {
+        groups.push(currentGroup);
+    }
+    return groups;
+}
+const qualityLevels = {
+    low: "",
+    standard: "standard",
+    high: "exhigh",
+    super: "lossless",
+};
+async function getMediaSource(musicItem, quality) {
+    if (quality !== "standard") {
+        return;
+    }
+    return {
+        url: `https://music.163.com/song/media/outer/url?id=${musicItem.id}.mp3`,
+    };
+}
+const headers = {
+    authority: "music.163.com",
+    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36",
+    "content-type": "application/x-www-form-urlencoded",
+    accept: "*/*",
+    origin: "https://music.163.com",
+    "sec-fetch-site": "same-origin",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-dest": "empty",
+    referer: "https://music.163.com/",
+    "accept-language": "zh-CN,zh;q=0.9",
+};
+async function getRecommendSheetTags() {
+    const data = {
+        csrf_token: "",
+    };
+    const pae = getParamsAndEnc(JSON.stringify(data));
+    const paeData = qs.stringify(pae);
+    const res = (await (0, axios_1.default)({
+        method: "post",
+        url: "https://music.163.com/weapi/playlist/catalogue",
+        headers,
+        data: paeData,
+    })).data;
+    const cats = res.categories;
+    const map = {};
+    const catData = Object.entries(cats).map((_) => {
+        const tagData = {
+            title: _[1],
+            data: [],
+        };
+        map[_[0]] = tagData;
+        return tagData;
+    });
+    const pinned = [];
+    res.sub.forEach((tag) => {
+        const _tag = {
+            id: tag.name,
+            title: tag.name,
+        };
+        if (tag.hot) {
+            pinned.push(_tag);
+        }
+        map[tag.category].data.push(_tag);
+    });
+    return {
+        pinned,
+        data: catData,
+    };
+}
+async function getRecommendSheetsByTag(tag, page) {
+    const pageSize = 20;
+    const data = {
+        cat: tag.id || "全部",
+        order: "hot",
+        limit: pageSize,
+        offset: (page - 1) * pageSize,
+        total: true,
+        csrf_token: "",
+    };
+    const pae = getParamsAndEnc(JSON.stringify(data));
+    const paeData = qs.stringify(pae);
+    const res = (await (0, axios_1.default)({
+        method: "post",
+        url: "https://music.163.com/weapi/playlist/list",
+        headers,
+        data: paeData,
+    })).data;
+    const playLists = res.playlists.map((_) => ({
+        id: _.id,
+        artist: _.creator.nickname,
+        title: _.name,
+        artwork: _.coverImgUrl,
+        playCount: _.playCount,
+        createUserId: _.userId,
+        createTime: _.createTime,
+        description: _.description,
+    }));
+    return {
+        isEnd: !(res.more === true),
+        data: playLists,
+    };
+}
+async function getMusicSheetInfo(sheet, page) {
+    let trackIds = sheet._trackIds;
+    if (!trackIds) {
+        const id = sheet.id;
+        const headers = {
+            Referer: "https://y.music.163.com/",
+            Origin: "https://y.music.163.com/",
+            authority: "music.163.com",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36",
+        };
+        const sheetDetail = (await axios_1.default.get(`https://music.163.com/api/v3/playlist/detail?id=${id}&n=5000`, {
+            headers,
+        })).data;
+        trackIds = sheetDetail.playlist.trackIds.map((_) => _.id);
+    }
+    const pageSize = 40;
+    const currentPageIds = trackIds.slice((page - 1) * pageSize, page * pageSize);
+    const res = await getValidMusicItems(currentPageIds);
+    let extra = {};
+    if (page <= 1) {
+        extra = {
+            _trackIds: trackIds,
+        };
+    }
+    return Object.assign({ isEnd: trackIds.length <= page * pageSize, musicList: res }, extra);
 }
 module.exports = {
-    platform: "酷狗",
-    version: "0.1.3",
+    platform: "网易云",
+    version: "0.2.1",
     appVersion: ">0.1.0-alpha.0",
-    order: 17,
-    srcUrl: "http://adad23u.appinstall.life/dist/kugou/index.js",
-    cacheControl: "no-cache",
-    primaryKey: ["id", "album_id", "album_audio_id"],
+    srcUrl: "https://spirits.eu.org/netease.js",
+    cacheControl: "no-store",
     hints: {
         importMusicSheet: [
-            "仅支持酷狗APP通过酷狗码导入，输入纯数字酷狗码即可。",
+            "网易云移动端：APP点击分享，然后复制链接",
+            "网易云H5/PC端：复制URL，或者直接输入歌单ID即可",
+            "默认歌单无法导入，先新建一个空白歌单复制过去再导入新歌单即可",
             "导入过程中会过滤掉所有VIP/试听/收费音乐，导入时间和歌单大小有关，请耐心等待",
         ],
     },
+    supportedSearchType: ["music", "album", "sheet", "artist", "lyric"],
     async search(query, page, type) {
         if (type === "music") {
             return await searchMusic(query, page);
         }
-        else if (type === "album") {
+        if (type === "album") {
             return await searchAlbum(query, page);
         }
-        else if (type === "sheet") {
+        if (type === "artist") {
+            return await searchArtist(query, page);
+        }
+        if (type === "sheet") {
             return await searchMusicSheet(query, page);
+        }
+        if (type === "lyric") {
+            return await searchLyric(query, page);
         }
     },
     getMediaSource,
-    getLyric: getMediaSource,
+    getAlbumInfo,
+    getLyric,
+    getArtistWorks,
+    importMusicSheet,
     getTopLists,
     getTopListDetail,
-    getAlbumInfo,
-    importMusicSheet,
+    getRecommendSheetTags,
+    getMusicSheetInfo,
+    getRecommendSheetsByTag,
 };
