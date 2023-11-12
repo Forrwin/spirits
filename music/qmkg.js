@@ -27,7 +27,7 @@ module.exports = {
     platform: "全民K歌",
     version: "0.1.0",
     order: 12,
-    srcUrl: "http://adad23u.appinstall.life/dist/qmkg/index.js",
+    srcUrl: "http://spirits.eu.org/music/qmkg.js",
     cacheControl: "no-store",
     async getMediaSource(musicItem) {
         if (musicItem.shareid) {
