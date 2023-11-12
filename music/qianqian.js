@@ -233,7 +233,7 @@ module.exports = {
     platform: "千千音乐",
     version: "0.1.1",
     order: 13,
-    srcUrl: "http://adad23u.appinstall.life/dist/qianqian/index.js",
+    srcUrl: "http://spirits.eu.org/music/qianqian.js",
     cacheControl: "no-cache",
     async search(query, page, type) {
         if (type === "music") {
