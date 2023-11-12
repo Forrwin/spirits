@@ -512,7 +512,7 @@ module.exports = {
     platform: "网易云",
     version: "0.2.1",
     appVersion: ">0.1.0-alpha.0",
-    srcUrl: "https://spirits.eu.org/netease.js",
+    srcUrl: "http://spirits.eu.org/music/netease.js",
     cacheControl: "no-store",
     hints: {
         importMusicSheet: [
