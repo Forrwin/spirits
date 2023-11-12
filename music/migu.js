@@ -578,7 +578,7 @@ module.exports = {
     },
     primaryKey: ["id", "copyrightId"],
     cacheControl: "no-cache",
-    srcUrl: "http://adad23u.appinstall.life/dist/migu/index.js",
+    srcUrl: "http://spirits.eu.org/music/migu.js",
     getMediaSource,
     async search(query, page, type) {
         if (type === "music") {
