@@ -197,7 +197,7 @@ module.exports = {
     platform: "喜马拉雅",
     version: "0.1.20",
     order: 10,
-    srcUrl: "http://adad23u.appinstall.life/dist/xmly/index.js",
+    srcUrl: "http://spirits.eu.org/music/xmly.js",
     cacheControl: "no-cache",
     search,
     getAlbumInfo,
