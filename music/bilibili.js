@@ -442,7 +442,7 @@ module.exports = {
     defaultSearchType: "album",
     cacheControl: "no-cache",
     order: 18,
-    srcUrl: "http://adad23u.appinstall.life/dist/bilibili/index.js",
+    srcUrl: "http://spirits.eu.org/music/bilibili.js",
     primaryKey: ["id", "aid", "bvid", "cid"],
     hints: {
         importMusicSheet: [
