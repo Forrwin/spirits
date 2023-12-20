@@ -474,7 +474,7 @@ module.exports = {
     order: 10,
     author: 'çŒ«å¤´çŒ«',
     primaryKey: ["id", "url_slug"],
-    srcUrl: "http://adad23u.appinstall.life/dist/audiomack/index.js",
+    srcUrl: "http://spirits.eu.org/music/global.js",
     cacheControl: "no-cache",
     async search(query, page, type) {
         if (type === "music") {
