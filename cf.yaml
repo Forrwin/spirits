@@ -14,4 +14,4 @@ dns:
     - tls://1.0.0.1:853
     - tls://dns.google:853
 proxies:
-  - {name: HK, server: highspirits.eu.org, port: 443, client-fingerprint: randomized, type: vless, uuid: eed51ba6-37ac-42a4-b378-7e783a62ef2b, tls: true, tfo: false, skip-cert-verify: false, servername: highspirits.eu.org, network: ws, ws-opts: {path: "/?ed=2560", headers: {Host: highspirits.eu.org}}}
+  - {name: 通用, server: highspirits.eu.org, port: 443, client-fingerprint: randomized, type: vless, uuid: eed51ba6-37ac-42a4-b378-7e783a62ef2b, tls: true, tfo: false, skip-cert-verify: false, servername: highspirits.eu.org, network: ws, ws-opts: {path: "/?ed=2560", headers: {Host: highspirits.eu.org}}}
