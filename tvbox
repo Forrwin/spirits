@@ -8,6 +8,25 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1
+    },
+{
+  "sites": [
+    {
+      "key": "spirits",
+      "name": "淘片",
+      "type": 1,
+      "api": "https://taopianapi.com/cjapi/sda/vod/json.html",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0,
+      "categories": [
+        "电影",
+        "电视剧",
+        "动漫",
+        "综艺"
+      ]
     }
+  ]
+}
   ]
 }
