@@ -1,19 +1,13 @@
 {
   "sites": [
     {
-      "key": "spirits",
-      "name": "非凡",
-      "type": 0,
-      "api": "http://api.ffzyapi.com/api.php/provide/vod/at/xml/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "categories": [
-        "电影",
-        "连续剧",
-        "动漫",
-        "综艺"
-      ]
+  "key": "瓜子影视",
+            "name": "👖瓜子影视✈️TG频道@stymei1",
+            "type": 3,"jar": "https://mpimg.cn/down.php/2fb2ccf2b4e59d8714abbbf151f8ce46.jar",
+            "api": "csp_Gz360",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
     }
   ]
 }
