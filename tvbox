@@ -9,11 +9,11 @@
             "quickSearch": 1,
             "filterable": 1
     },
-    {
+   {
       "key": "spirits",
-      "name": "淘片",
+      "name": "U酷",
       "type": 1,
-      "api": "https://taopianapi.com/cjapi/sda/vod/json.html",
+      "api": "https://api.ukuapi88.com/api.php/provide/art/?ac=list",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 0,
@@ -26,4 +26,5 @@
     }
   ]
 }
+  
 
