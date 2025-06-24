@@ -8,23 +8,8 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1
-    },
-   {
-      "key": "spirits",
-      "name": "U酷",
-      "type": 1,
-      "api": "https://api.ukuapi88.com/api.php/provide/art/?ac=list",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "categories": [
-        "电影",
-        "电视剧",
-        "动漫",
-        "综艺"
+    }
       ]
     }
-  ]
-}
   
 
