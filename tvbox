@@ -9,8 +9,6 @@
             "quickSearch": 1,
             "filterable": 1
     },
-{
-  "sites": [
     {
       "key": "spirits",
       "name": "淘片",
@@ -28,5 +26,4 @@
     }
   ]
 }
-  ]
-}
+
