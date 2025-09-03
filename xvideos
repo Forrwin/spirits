@@ -28,7 +28,7 @@
 {"key":"探探资源","name":"探探资源(🔞)","type":0,"api":"https://apittzy.com/api.php/provide/vod/at/xml","playerUrl":""},
 {"key":"嘛唞资源","name":"嘛唞资源(🔞)","type":0,"api":"https://madoucun.com/api.php/provide/vod/at/xml","playerUrl":""}],
 #直播
-"lives":[{"group":"redirect","channels":[{"name":"live","urls":["https://cyuan.netlify.app/tvbox/lives/18+/18+千部独家传媒无水印来袭tvlist.txt"]}]}],
+"lives":[{"name":"直播","urls":["https://cyuan.netlify.app/tvbox/lives/18+/18+千部独家传媒无水印来袭tvlist.txt"]}],
 #解析
 "parses":[
 {"name":"聚合","type":3,"url":"Demo"},
