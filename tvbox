@@ -7,6 +7,7 @@
       "key": "窈窕",
       "name": "窈窕|4K弹幕",
       "type": 3,
+,"jar": "https://gitee.com/zj521jj/little-tiger-spot/raw/master/jar/HubanTC.jar",
       "api": "csp_HBT4",
       "ext": "http://154.219.113.13:4866/test.php?site=labi###labi"
     },
