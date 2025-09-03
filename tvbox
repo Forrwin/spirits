@@ -1,7 +1,7 @@
 #勿抄袭
 {"spider":"./lib/ja.jar","sites":[
 #弹幕 
-{"key": "huban","name": "虎斑┃弹幕┃小窗","type": 3,"jar": "https://gitee.com/zj521jj/little-tiger-spot/raw/master/jar/HubanTC.jar";"api": "csp_Huban"},
+{"key": "huban","name": "虎斑┃弹幕┃小窗","type": 3,"jar": "https://gitee.com/zj521jj/little-tiger-spot/raw/master/jar/HubanTC.jar";"api": "csp_Huban" },
 #切片
 {"key":"快龙资源","name":"快龙资源(🔥)","type":0,"api":"https://lz.118318.xyz/api.php/provide/vod/at/xml","searchable":1,"quickSearch":1,"categories":["动漫片","日韩动漫","国产动漫","欧美动漫","港台动漫","海外动漫","记录片","科幻片","恐怖片","动作片","喜剧片","爱情片","剧情片","战争片","预告片","电影片","综艺片","伦理片","国产剧","香港剧","韩国剧","欧美剧","台湾剧","日本剧","海外剧","泰国剧","连续剧","短剧","电影解说","大陆综艺","港台综艺","日韩综艺","欧美综艺","篮球","足球","网球","斯诺克"]},
 {"key":"暴风资源","name":"暴风资源(🔥)","type":1,"api":"http://bf.xoxowin86cisyap.com/api.php/provide/vod","searchable":1,"quickSearch":1,"categories":["电影片","动作片","喜剧片","恐怖片","科幻片","爱情片","剧情片","战争片","动画片","纪录片","预告片","理论片","连续剧","国产剧","欧美剧","香港剧","韩国剧","台湾剧","日本剧","海外剧","泰国剧","动漫片","国产动漫","日韩动漫","欧美动漫","港台动漫","海外动漫","综艺片","大陆综艺","港台综艺","日韩综艺","欧美综艺","电影解说","重生民国","穿越年代","现代言情","反转爽文","女恋总裁","闪婚离婚","都市脑洞","古装仙侠","福利","足球","篮球","斯诺克"]},  
@@ -38,34 +38,6 @@
 {"key":"非凡影视","name":"非凡影视(🔥)","type":1,"api":"http://api.ffzyapi.com/api.php/provide/vod/from/ffm3u8","searchable":1,"changeable":1,"categories":["科幻片","动作片","恐怖片","喜剧片","爱情片","剧情片","战争片","伦理片","记录片","动漫片","国产动漫","日韩动漫","海外动漫","国产剧","韩国剧","日本剧","香港剧","欧美剧","台湾剧","海外剧","泰国剧","大陆综艺","港台综艺","日韩综艺"]},
 {"key":"影图影视","name":"影图影视(🔥)","type":1,"api":"https://cj.vodimg.top/api.php/provide/vod","searchable":1,"quickSearch":1,"categories":["综艺","动漫","电影","动作片","喜剧片","爱情片","科幻片","恐怖片","剧情片","战争片","连续剧","国产剧","港台剧","日韩剧","欧美剧"]},
 {"key":"梦梦影视","name":"梦梦影视(🔥)","type":0,"api":"https://www.gtrgt.com//api.php/provide/vod/at/xml","searchable":1,"quickSearch":1,"categories":["动漫","动作片","喜剧片","爱情片","科幻片","恐怖片","剧情片","战争片","纪录片","论理片","短剧","大陆剧","台湾剧","美剧","海外剧","韩国剧","香港剧","日本剧","泰国剧","电影解说","大陆综艺","港台综艺","日韩综艺","欧美综艺","国产动漫","日韩动漫","欧美动漫","港台动漫","海外动漫","足球","篮球","网球","斯诺克"]},
-#福利
-{"key":"樂吧资源","name":"樂吧资源(🔞)","type":1,"api":"http://lbapiby.com/api.php/provide/vod","playerUrl":""},
-{"key":"番号资源","name":"番号资源(🔞)","type":0,"api":"http://fhapi9.com/api.php/provide/vod/at/xml","playerUrl":""},
-{"key":"大地资源","name":"大地资源(🔞)","type":0,"api":"https://dadiapi.com/api.php/provide/vod/at/xml","playerUrl":""},
-{"key":"苹果资源","name":"苹果资源(🔞)","type":0,"api":"https://www.pgxdy.com/api/xml.php","searchable":0,"quickSearch":0},
-{"key":"淫水机云","name":"淫水机云(🔞)","type":0,"api":"https://www.xrbsp.com/api/xml.php","searchable":0,"quickSearch":0},
-{"key":"美少女云","name":"美少女云(🔞)","type":0,"api":"https://www.msnii.com/api/xml.php","searchable":0,"quickSearch":0},
-{"key":"香奶儿云","name":"香奶儿云(🔞)","type":0,"api":"https://www.gdlsp.com/api/xml.php","searchable":0,"quickSearch":0},
-{"key":"开心果云","name":"开心果云(🔞)","type":0,"api":"https://www.kxgav.com/api/xml.php","searchable":0,"quickSearch":0},
-{"key":"小湿妹云","name":"小湿妹云(🔞)","type":0,"api":"https://www.afasu.com/api/xml.php","searchable":0,"quickSearch":0},
-{"key":"色南国云","name":"色南国云(🔞)","type":0,"api":"https://api.sexnguon.com/api.php/provide/vod/at/xml","playerUrl":""},
-{"key":"老色逼云","name":"老色逼云(🔞)","type":0,"api":"https://apilsbzy1.com/api.php/provide/vod/at/xml","playerUrl":""},
-{"key":"奥斯卡云","name":"奥斯卡云(🔞)","type":0,"api":"https://aosikazy.com/api.php/provide/vod/at/xml","playerUrl":""},
-{"key":"久久热云","name":"久久热云(🔞)","type":0,"api":"https://99reapi.com/api.php/provide/vod/at/xml","playerUrl":""},
-{"key":"狼少年云","name":"狼少年云(🔞)","type":0,"api":"http://cjmygzy.com/inc/sapi.php?ac=videolist","playerUrl":""},
-{"key":"越资源云","name":"越资源云(🔞)","type":0,"api":"https://apilsbzy1.com/api.php/provide/vod/at/xml","playerUrl":""},
-{"key":"一五五云","name":"一五五云(🔞)","type":0,"api":"https://155api.com/api.php/provide/vod/vod/at/xml","playerUrl":""},
-{"key":"九九八云","name":"九九八云(🔞)","type":0,"api":"https://api.998zy.com/api.php/provide/vod/at/xml","playerUrl":""},
-{"key":"色猫资源","name":"色猫资源(🔞)","type":1,"api":"https://caiji.semaozy.net/inc/api.php","playerUrl":""},
-{"key":"玉兔资源","name":"玉兔资源(🔞)","type":1,"api":"https://apiyutu.com/api.php/provide/vod","playerUrl":""},
-{"key":"奶香资源","name":"奶香资源(🔞)","type":1,"api":"https://naixxzy.com/api.php/provide/vod","playerUrl":""},
-{"key":"百万资源","name":"百万资源(🔞)","type":1,"api":"https://api.bwzym3u8.com/api.php/provide/vod","playerUrl":""},
-{"key":"桃花资源","name":"桃花资源(🔞)","type":0,"api":"https://thzy1.me/api.php/provide/vod/at/xml","playerUrl":""},
-{"key":"雪豹资源","name":"雪豹资源(🔞)","type":0,"api":"https://api.xbapi.cc/api.php/provide/vod/at/xml","playerUrl":""},
-{"key":"老鸭资源","name":"老鸭资源(🔞)","type":0,"api":"https://api.apilyzy.com/api.php/provide/vod/at/xml","playerUrl":""},
-{"key":"金坤资源","name":"金坤资源(🔞)","type":0,"api":"https://www.jkunzyapi.com/api.php/provide/vod/at/xml","playerUrl":""},
-{"key":"探探资源","name":"探探资源(🔞)","type":0,"api":"https://apittzy.com/api.php/provide/vod/at/xml","playerUrl":""},
-{"key":"嘛唞资源","name":"嘛唞资源(🔞)","type":0,"api":"https://madoucun.com/api.php/provide/vod/at/xml","playerUrl":""}],
 #直播
 "lives":[{"group":"redirect","channels":[{"name":"live","urls":["proxy://do=live&type=txt&ext=aHR0cHM6Ly9wYXN0ZWJpbi5jb20vcmF3L0M1QUd0YUt0"]}]}],
 #解析
