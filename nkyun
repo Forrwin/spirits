@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>念空永久直链托管</title>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?f463aebe70bb41d3370a497b28a6d7ac";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --text-primary: #333;
+            --accent-color: #4a6cf7;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, sans-serif; }
+
+        body {
+            min-height: 100vh;
+            display: flex; justify-content: center; align-items: flex-start;
+            color: var(--text-primary); overflow-x: hidden;
+            padding: 15px; padding-top: 8vh;
+        }
+
+        /* 背景层 */
+        .background-layer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; }
+        .background-video { width: 100%; height: 100%; object-fit: cover; }
+        .background-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.6); z-index: -1;
+        }
+
+        /* 跑马灯 */
+        .marquee-container {
+            position: fixed; top: 0; left: 0; width: 100%;
+            background: var(--glass-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            padding: 8px 0; box-shadow: var(--glass-shadow); z-index: 100;
+        }
+        .marquee { white-space: nowrap; display: inline-block; animation: marquee 20s linear infinite; }
+        .marquee a { color: var(--text-primary); font-weight: bold; text-decoration: none; padding: 0 15px; font-size: 14px; }
+        @keyframes marquee { 0% { transform: translateX(100vw); } 100% { transform: translateX(-100%); } }
+
+        /* 内容区 */
+        .main-layer { width: 100%; max-width: 450px; }
+        .page-title {
+            text-align: center; font-size: 32px; font-weight: 700; margin-bottom: 15px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #feca57);
+            background-size: 400% 400%; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: gradient 8s ease infinite;
+        }
+        @keyframes gradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+        .avatar-img {
+            width: 90px; height: 90px; border-radius: 50%; object-fit: cover;
+            display: block; margin: 0 auto;
+        }
+
+        .glass-card {
+            background: var(--glass-bg); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border-radius: 12px; border: 1px solid var(--glass-border); padding: 25px;
+            box-shadow: var(--glass-shadow); text-align: center; margin-top: 25px;
+        }
+
+        .upload-zone {
+            border-radius: 12px; padding: 30px 15px; cursor: pointer;
+            background: rgba(255, 255, 255, 0.2); margin-bottom: 15px; transition: 0.3s;
+        }
+        .upload-info { font-size: 12px; color: #555; margin-top: 10px; line-height: 1.6; }
+
+        .btn {
+            background: var(--accent-color); color: white; border: none; padding: 12px;
+            border-radius: 8px; cursor: pointer; font-weight: 600; width: 100%;
+        }
+
+        /* 结果与进度 */
+        #progressSection, #resultSection { display: none; margin-top: 20px; }
+        .progress-bar { background: rgba(0,0,0,0.1); height: 8px; border-radius: 4px; overflow: hidden; margin: 10px 0; }
+        .progress-fill { width: 0%; height: 100%; background: var(--accent-color); transition: 0.3s; }
+
+        .result-item { text-align: left; margin-bottom: 12px; }
+        .label { font-size: 11px; color: #666; font-weight: bold; margin-bottom: 4px; display: block; }
+        .input-group {
+            display: flex; background: rgba(255,255,255,0.4); border: 1px solid var(--glass-border); border-radius: 6px; padding: 4px;
+        }
+        .input-group input { flex: 1; background: transparent; border: none; padding: 6px; font-size: 12px; outline: none; }
+        .btn-copy { background: var(--accent-color); color: white; border: none; padding: 0 10px; border-radius: 4px; font-size: 11px; }
+
+        /* 音乐按钮 */
+        .music-player { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
+        .music-toggle {
+            width: 45px; height: 45px; border-radius: 50%; background: var(--glass-bg);
+            backdrop-filter: blur(10px); border: 1px solid var(--glass-border);
+            display: flex; align-items: center; justify-content: center; cursor: pointer;
+        }
+        .music-toggle.playing { animation: rotate 4s linear infinite; }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .music-toggle::after { content: "♫"; font-size: 20px; color: var(--accent-color); }
+    </style>
+</head>
+<body>
+
+    <div class="background-layer">
+        <video class="background-video" autoplay muted loop playsinline>
+            <source src="https://txmov2.a.kwimgs.com/upic/2023/10/13/16/BMjAyMzEwMTMxNjU4MTJfMTcyNTc4NzU4N18xMTQ4OTQ2OTgxMzRfMl8z_b_B209e890a596d64fbd174507b758b0815.mp4" type="video/mp4">
+        </video>
+        <div class="background-overlay"></div>
+    </div>
+
+    <div class="marquee-container">
+        <div class="marquee">
+            <a href="ww.baidu.com" target="_blank">念空最帅</a>
+        </div>
+    </div>
+
+    <div class="main-layer">
+        <div class="page-title">念空永久直链托管</div>
+        <img class="avatar-img" src="https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png" alt="Avatar">
+
+        <div class="glass-card">
+            <div id="uploadForm">
+                <div class="upload-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
+                    <div style="font-size: 40px;">📂</div>
+                    <p style="font-size: 14px; font-weight: 600; margin-top: 8px;">点击或拖拽上传</p>
+                    <div class="upload-info">
+                        ✅ 不限格式 · 📦 200MB内<br>
+                        ☁️ 永久储存 · ⚡ 加速通道
+                    </div>
+                    <input type="file" id="fileInput" hidden>
+                </div>
+                <button class="btn" onclick="document.getElementById('fileInput').click()">立即上传</button>
+            </div>
+
+            <div id="progressSection">
+                <p style="font-size: 13px;">待定 </p>
+                <div class="progress-bar"><div class="progress-fill" id="progressBar"></div></div>
+                <p id="percentText" style="font-size: 12px; color: var(--accent-color);">0%</p>
+            </div>
+
+            <div id="resultSection">
+                <div class="result-item">
+                    <span class="label">🚀 镜像加速链接</span>
+                    <div class="input-group">
+                        <input type="text" id="proxyLink" readonly>
+                        <button class="btn-copy" onclick="copyValue('proxyLink', this)">复制</button>
+                    </div>
+                </div>
+                <div class="result-item">
+                    <span class="label">🔗 原始官方链接</span>
+                    <div class="input-group">
+                        <input type="text" id="rawLink" readonly>
+                        <button class="btn-copy" onclick="copyValue('rawLink', this)">复制</button>
+                    </div>
+                </div>
+                <button class="btn" style="background:transparent; border:1px solid var(--accent-color); color:var(--accent-color);" onclick="location.reload()">重新上传</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="music-player">
+        <div class="music-toggle" id="musicToggle"></div>
+    </div>
+    <audio id="bgMusic" loop preload="auto" src="https://mpimg.cn/view.php/ac863e4b37bd7eb8388e97f15aed64dc.mp3"></audio>
+
+    <script>
+        const bgMusic = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        const fileInput = document.getElementById('fileInput');
+
+        // 配置
+        const CF_PROXY = 'https://www.jsnzkpg.workers.dev/?url='; 
+        const API_URL = 'https://catbox.moe/user/api.php';
+        const MIRROR = 'https://down.nigx.cn/'; 
+
+        // --- 音乐自动播放逻辑 ---
+        function tryPlayMusic() {
+            bgMusic.muted = true; // 先静音
+            bgMusic.play().then(() => {
+                musicToggle.classList.add('playing');
+            }).catch(() => {});
+        }
+
+        // 监听第一次点击唤醒音频
+        window.addEventListener('click', () => {
+            if (bgMusic.muted) {
+                bgMusic.muted = false;
+                if (bgMusic.paused) bgMusic.play();
+                musicToggle.classList.add('playing');
+            }
+        }, { once: true });
+
+        musicToggle.onclick = (e) => {
+            e.stopPropagation();
+            if (bgMusic.paused) {
+                bgMusic.muted = false; bgMusic.play();
+                musicToggle.classList.add('playing');
+            } else {
+                bgMusic.pause();
+                musicToggle.classList.remove('playing');
+            }
+        };
+
+        window.addEventListener('load', tryPlayMusic);
+
+        // --- 上传逻辑 ---
+        fileInput.onchange = (e) => { if(e.target.files[0]) handleUpload(e.target.files[0]); };
+
+        async function handleUpload(file) {
+            if (file.size > 200 * 1024 * 1024) return alert('超标了，请传200MB以内的！');
+            
+            document.getElementById('uploadForm').style.display = 'none';
+            document.getElementById('progressSection').style.display = 'block';
+
+            const fd = new FormData();
+            fd.append('reqtype', 'fileupload');
+            fd.append('fileToUpload', file);
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', CF_PROXY + encodeURIComponent(API_URL));
+
+            xhr.upload.onprogress = (e) => {
+                if (e.lengthComputable) {
+                    const p = Math.round((e.loaded / e.total) * 100);
+                    document.getElementById('progressBar').style.width = p + '%';
+                    document.getElementById('percentText').innerText = p + '%';
+                }
+            };
+
+            xhr.onload = () => {
+                const res = xhr.responseText.trim();
+                if (xhr.status === 200 && res.includes('http')) {
+                    document.getElementById('rawLink').value = res;
+                    document.getElementById('proxyLink').value = MIRROR + res.replace(/^https?:\/\//, '');
+                    document.getElementById('progressSection').style.display = 'none';
+                    document.getElementById('resultSection').style.display = 'block';
+                } else {
+                    alert('上传失败，请刷新重试');
+                    location.reload();
+                }
+            };
+            xhr.send(fd);
+        }
+
+        function copyValue(id, btn) {
+            const input = document.getElementById(id);
+            input.select();
+            input.setSelectionRange(0, 99999);
+            document.execCommand('copy');
+            const old = btn.innerText;
+            btn.innerText = '成功';
+            setTimeout(() => btn.innerText = old, 2000);
+        }
+    </script>
+</body>
+</html>
