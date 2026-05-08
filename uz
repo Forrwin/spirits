@@ -2,63 +2,63 @@
   "live": [
     {
       "name": "TV直播",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "url": "https://gh-proxy.org/https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1",
       "type": 10,
       "remark": "专属"
     },
     {
       "name": "日后TV直播",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "url": "http://rihou.cc:555/gggg.nzk",
       "type": 10,
       "remark": "专属"
 },
 {
       "name": "潇雨萌萌TV直播",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "url": "https://ds65.tv1288.xyz",
       "type": 10,
       "remark": "专属"
 },
 {
       "name": "风云TV直播",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "url": "http://iptv.4666888.xyz/FYTV.txt",
       "type": 10,
       "remark": "专属"
 },
     {
       "name": "宫殿TV直播",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "url": "https://gongdian.top/tv/iptv",
       "type": 10,
       "remark": "专属"
     },
     {
       "name": "易发TV直播",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "url": "https://gh-proxy.org/https://raw.githubusercontent.com/fafa002/yf2025/refs/heads/main/yiyifafa.txt",
       "type": 10,
       "remark": "专属"
     },
     {
       "name": "JackTV直播{翻}",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "url": "https://php.946985.filegear-sg.me/jackTV.m3u",
       "type": 10,
       "remark": "专属"
 },
 {
       "name": "日本TV直播{翻}",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "url": "https://web.utako.moe/jp.m3u",
       "type": 10,
       "remark": "专属"
     },
     {
       "name": "海外TV直播{翻}",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "url": "https://proxy.api.030101.xyz/iptv-org.github.io/iptv/index.m3u",
       "type": 10,
       "remark": "专属"
@@ -67,7 +67,7 @@
   "vod": [
     {
       "name": "豆瓣热播",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "version": 4,
       "remark": "专属",
       "webSite": "https://movie.douban.com",
@@ -78,7 +78,7 @@
     },
     {
       "name": "bilibili直播",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "version": 9,
       "remark": "专属",
       "env": "bili_cookie##bili_cookie 用于获取个性化推荐和高清视频",
@@ -90,7 +90,7 @@
     },
         {
             "name": "[主用] 瓜子影视",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
             "version": 4,
       "remark": "专属",
             "webSite": "http://api.gudvxty.com",
@@ -101,7 +101,7 @@
         },
         {
             "name": "[备用] 瓜子影视",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
             "version": 4,
       "remark": "专属",
             "webSite": "http://api.gudvxty.com",
@@ -113,7 +113,7 @@
         },
     {
       "name": "荐片",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "version": 2,
       "remark": "专属",
       "webSite": "jianpian",
@@ -124,7 +124,7 @@
     },
         {
             "name": "乌云影视",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
             "version": 3,
             "remark": "专属",
             "webSite": "https://wooyun.tv",
@@ -134,7 +134,7 @@
         },
     {
       "name": "两个BT",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "version": 3,
       "remark": "专属",
       "webSite": "https://www.bttwoo.com",
@@ -144,7 +144,7 @@
     },
     {
       "name": "修罗影视",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "version": 2,
       "remark": "专属",
       "webSite": "https://xl01.com.de",
@@ -154,7 +154,7 @@
     },
     {
       "name": "欧乐影视",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "version": 3,
       "remark": "专属",
       "webSite": "https://www.olehdtv.com",
@@ -165,7 +165,7 @@
     },
     {
       "name": "奇优影院",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "version": 2,
       "remark": "专属",
       "webSite": "http://www.qiyoudy4.com",
@@ -175,7 +175,7 @@
     },
     {
       "name": "1080在线",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "version": 4,
       "remark": "专属",
       "webSite": "https://www.zxzjhd.com",
@@ -186,7 +186,7 @@
     },
     {
       "name": "人人视频",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "version": 2,
       "remark": "专属",
       "webSite": "RRSP",
@@ -197,7 +197,7 @@
     },
     {
       "name": "韩剧看看",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "version": 2,
       "remark": "专属",
       "webSite": "https://www.hanjukankan.com",
@@ -208,7 +208,7 @@
     },
     {
       "name": "八号影视",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "version": 1,
       "remark": "专属",
       "webSite": "https://www.bahaotv.com",
@@ -218,7 +218,7 @@
     },
     {
       "name": "iKanBot",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "version": 1,
       "remark": "专属",
       "webSite": "https://v.aikanbot.com",
@@ -229,7 +229,7 @@
     },
     {
       "name": "河马短剧",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "version": 1,
       "remark": "专属",
       "webSite": "https://www.kuaikaw.cn",
@@ -240,7 +240,7 @@
     },
     {
       "name": "E-ACG",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "version": 1,
       "remark": "专属",
       "webSite": "https://eacg1.com",
@@ -250,7 +250,7 @@
     },
     {
       "name": "E-ACG2",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "version": 1,
       "remark": "专属",
       "webSite": "https://eacg1.com",
@@ -260,7 +260,7 @@
     },
     {
       "name": "girigirilove",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "version": 1,
       "remark": "专属",
       "webSite": "https://anime.girigirilove.com",
@@ -270,7 +270,7 @@
     },
     {
       "name": "酷我听书",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "version": 1,
       "remark": "专属",
       "webSite": "http://tingshu.kuwo.cn",
@@ -280,7 +280,7 @@
     },
         {
             "name": "GD音乐台",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
             "version": 4,
             "remark": "专属",
             "webSite": "https://music.gdstudio.xyz/",
@@ -291,247 +291,247 @@
         },
     {
       "name": "无水印",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://api.wsyzy.net/api.php/provide/vod"
     },
     {
       "name": "爬虫",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://dy.7772888.xyz/api.php/tvbox"
     },
     {
       "name": "极速",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://jszyapi.com/api.php/provide/vod/from/jsm3u8/at/json"
     },
     {
       "name": "暴风",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "http://by.bfzyapi.com/api.php/provide/vod"
     },
     {
       "name": "电影天堂",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "http://dyttzyw.com/api.php/provide/vod/?ac=list"
     },
     {
       "name": "豆瓣",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://caiji.doubanzy.cc/api.php/provide/vod/at/josn"
     },
     {
       "name": "茅台",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://caiji.maotaizy.cc/api.php/provide/vod/from/mtm3u8/at/josn"
     },
     {
       "name": "如意",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "http://cj.rycjapi.com/api.php/provide/vod/?ac=list"
     },
     {
       "name": "量子",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://cj.lziapi.com/api.php/provide/vod/?ac=list"
     },
     {
       "name": "卧龙",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://collect.wolongzy.cc/api.php/provide/vod"
     },
     {
       "name": "360",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://360zyzz.com/api.php/provide/vod"
     },
     {
       "name": "U酷",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://api.ukuapi88.com/api.php/provide/vod/?ac=list"
     },
     {
       "name": "天涯",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://tyyszyapi.com/api.php/provide/vod/?ac=list"
     },
     {
       "name": "无尽",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://api.wujinapi.me/api.php/provide/vod/?ac=list"
     },
     {
       "name": "iQIYI",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://iqiyizyapi.com/api.php/provide/vod"
     },
     {
       "name": "ikun",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://ikunzyapi.com/api.php/provide/vod/from/ikm3u8/at/json"
     },
     {
       "name": "魔都",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://www.mdzyapi.com/api.php/provide/vod/?ac=list"
     },
     {
       "name": "百度云",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://api.apibdzy.com/api.php/provide/vod/?ac=list"
     },
     {
       "name": "闪电",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://xsd.sdzyapi.com/api.php/provide/vod/?ac=list"
     },
     {
       "name": "红牛",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://www.hongniuzy2.com/api.php/provide/vod/from/hnm3u8/at/josn"
     },
     {
       "name": "光速",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://api.guangsuapi.com/api.php/provide/vod/from/gsm3u8"
     },
     {
       "name": "新浪",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://api.xinlangapi.com/xinlangapi.php/provide/vod/from/xlm3u8"
     },
     {
       "name": "快车",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://caiji.kuaichezy.org/api.php/provide/vod/?ac=list"
     },
     {
       "name": "金鹰",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://jyzyapi.com/provide/vod/from/jinyingm3u8/at/json"
     },
     {
       "name": "猫眼",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://api.maoyanapi.top/api.php/provide/vod"
     },
     {
       "name": "旺旺",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://api.wwzy.tv/api.php/provide/vod/?ac=list"
     },
     {
       "name": "虎牙",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://www.huyaapi.com/api.php/provide/vod/from/hym3u8/at/json"
     },
     {
       "name": "豪华",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://hhzyapi.com/api.php/provide/vod/from/hhm3u8/at/json"
     },
     {
       "name": "速播",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://subocj.com/api.php/provide/vod/from/subm3u8/at/json"
     },
     {
       "name": "非凡",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://ffzy1.tv/api.php/provide/vod"
     },
     {
       "name": "樱花",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://m3u8.apiyhzy.com/api.php/provide/vod/?ac=list"
     },
     {
       "name": "优质",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "http://api.yzzy-api.com/inc/apijson.php?ac=list"
     },
     {
       "name": "鸭鸭",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://cj.yayazy.net/api.php/provide/vod/?ac=list"
     },
     {
       "name": "牛牛",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://api.niuniuzy.me/api.php/provide/vod"
     },
     {
       "name": "最大",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "http://zuidazy.me/api.php/provide/vod"
     },
     {
       "name": "飘零",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://p2100.net/api.php/provide/vod"
     },
     {
       "name": "1080",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://api.1080zyku.com/inc/apijson.php"
     },
     {
       "name": "金蝉",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://zy.jinchancaiji.com/api.php/provide/vod"
     },
     {
       "name": "艾旦影视",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://lovedan.net/api.php/provide/vod"
     },
     {
       "name": "OK",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://api.okzyw.net/api.php/provide/vod/?ac=list"
     },
     {
       "name": "索尼",
-      "logo": "https://mpimg.cn/view.php/f28da3eac8f392e9fa2ba91723b2bf4c.png",
+    
       "remark": "专属",
       "url": "https://suoniapi.com/api.php/provide/vod/?ac=list"
     }
